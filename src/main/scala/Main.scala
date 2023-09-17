@@ -1,4 +1,4 @@
-import scala.util.Try
+import scala.util.{Random, Try}
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -36,6 +36,19 @@ object Main {
       }
     }
 
+//    Conparer deux films entre eux
+    val random = new Random()
+    val index1 = random.nextInt(cinema.length)
+    var index2 = random.nextInt(cinema.length)
+
+    while (index2 == index1) {
+      index2 = random.nextInt(cinema.length)
+    }
+
+    val movie01 = cinema(index1)
+    val movie02 = cinema(index2)
+    println(s"'${movie02.title}' est-il plus coté que '${movie01.title}' ? ${movie01 < movie02}")
+
 //    cinema.foreach(movie => println(movie.title, movie.year, movie.rating, movie.director, movie.actor))
 //    println(actorsList)
 
@@ -55,14 +68,12 @@ object Main {
       actors = actors :+ actor_
     }
 
-
 //    top 20 realisateur
     val top20Directors = directors.headOption.map(_.top20Directors(directors)).getOrElse(Nil)
-
-    println("top 20 realisateurs :")
-    top20Directors.foreach { director =>
-      println(s"${director.firstName} ${director.lastName} - moyenne : ${director.averageRating}")
-    }
+//    println("top 20 realisateurs :")
+//    top20Directors.foreach { director =>
+//      println(s"${director.firstName} ${director.lastName} - moyenne : ${director.averageRating}")
+//    }
 
 
 //    cinematheque2 --> c'est-a-dire a partir de 2015
@@ -70,14 +81,27 @@ object Main {
 //    recentCinema.foreach(movie => println(movie.year))
 
 //    cinematheque avec une note a partir de 8
-    val highRatedCinema = cinema.filter(movie => movie.rating >= 8.0)
-    highRatedCinema.foreach(movie => println(movie.year, movie.rating))
+    val highRatedCinema = cinema.filter(movie => movie.rating >= 8.0*100.00)
+//    highRatedCinema.foreach(movie => println(movie.year, movie.rating))
 
 //    troisieme cinematheque avec les criteres de mon choix
     val recenthighRatedCinema = cinema.filter(movie => movie.year >= 2016 && movie.rating >= 7.0)
-    recenthighRatedCinema.foreach(movie => println(movie.year, movie.rating))
+//    recenthighRatedCinema.foreach(movie => println(movie.year, movie.rating))
 
+    val user1 = new User("Dicken", "NGOLO", highRatedCinema)
+    val movie1 = user1.searchMovies(year = Some(2016))
 
+//    movie1.foreach { movie =>
+//      println(s"Titre : ${movie.title}")
+//      println(s"Année : ${movie.year}")
+//      println(s"Note : ${movie.rating}")
+//      println(s"Réalisateur : ${movie.director}")
+//      println(s"Acteur : ${movie.actor}")
+//      println()
+//    }
+
+//    user1.borrowMovie(1, movie1) //le premier livre de ma liste par exemeple
+//    user1.listBorrowedMovies()
     buf.close()
   }
 }

@@ -1,4 +1,3 @@
-import scala.collection.mutable._
 
 class Movie(mTitle : String, mYear: Int, mDirector:List[String], mActor:List[String], mRating: Double) extends Comparable {
   def title: String = mTitle

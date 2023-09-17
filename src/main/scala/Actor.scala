@@ -7,5 +7,18 @@ class Actor(_firstName: String, _lastName: String, _movies: List[Movie]) extends
 
   override def averageRating: Double = this.movies.map(_.rating).sum / movies.length
 
+  override def equals(toCompare: Any): Boolean = {
+    toCompare.isInstanceOf[Actor] && {
+      val m = toCompare.asInstanceOf[Actor]
+      m.averageRating == this.averageRating
+    }
+  }
+
+  override def <(toCompare: Any): Boolean = {
+    toCompare.isInstanceOf[Actor] && {
+      val m = toCompare.asInstanceOf[Actor]
+      this.averageRating < m.averageRating
+    }
+  }
 
 }
