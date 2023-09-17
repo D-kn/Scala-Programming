@@ -1,11 +1,14 @@
 import scala.collection.mutable._
 
-class Movie(mTitle : String, mYear: Int, mRating: Double, mDirector:String, mActor:String) extends Comparable {
+class Movie(mTitle : String, mYear: Int, mDirector:List[String], mActor:List[String], mRating: Double) extends Comparable {
   def title: String = mTitle
   def year: Int = mYear
   def rating: Double = mRating
-  def director: String = mDirector
-  def actor: String = mActor
+  def director: List[String] = mDirector
+  def actor: List[String] = mActor
+
+
+//  def from2015Movies: List[Move]
 
   override def equals(toCompare: Any) : Boolean = {
     toCompare.isInstanceOf[Movie] && {
@@ -19,5 +22,8 @@ class Movie(mTitle : String, mYear: Int, mRating: Double, mDirector:String, mAct
       this.rating < m.rating
     }
   }
+
+
+
 
 }

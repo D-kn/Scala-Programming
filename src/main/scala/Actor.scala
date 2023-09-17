@@ -7,4 +7,5 @@ class Actor(_firstName: String, _lastName: String, _movies: List[Movie]) extends
 
   override def averageRating: Double = this.movies.map(_.rating).sum / movies.length
 
+
 }
