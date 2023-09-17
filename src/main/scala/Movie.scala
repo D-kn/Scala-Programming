@@ -4,8 +4,8 @@ class Movie(mTitle : String, mYear: Int, mRating: Double, mDirector:String, mAct
   def title: String = mTitle
   def year: Int = mYear
   def rating: Double = mRating
-  def Director: String = mDirector
-  def Actor: String = mActor
+  def director: String = mDirector
+  def actor: String = mActor
 
   override def equals(toCompare: Any) : Boolean = {
     toCompare.isInstanceOf[Movie] && {
